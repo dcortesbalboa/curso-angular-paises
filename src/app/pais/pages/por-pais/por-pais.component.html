@@ -11,7 +11,20 @@
         </app-pais-buscador>
     </div>
 </div>
-
+<ul class="list-group" *ngIf="paisesSugeridos.length>0">
+    <li 
+        *ngFor="let paisS of paisesSugeridos" 
+        [routerLink]="['/pais', paisS.cca2]"
+        class="list-group-item list-group-item-action">
+        {{paisS.name.common}}
+    </li>
+    <li 
+        
+        class="list-group-item list-group-item-action"
+        (click)="buscar(termino)">
+        Buscar {{ termino }}
+    </li>
+</ul>
 <hr>
 
 <div *ngIf="hayError; else tablaResultados" 
