@@ -1,0 +1,29 @@
+<h2>Por Capital</h2>
+<hr />
+
+<div class="row">
+    <div class="col">
+        <app-pais-buscador 
+            (onBuscar)="buscar($event)"
+            (onDebounce)="sugerencias( $event )"
+            placeHholder="Buscar capital..."
+        >
+        </app-pais-buscador>
+    </div>
+</div>
+
+<hr>
+
+<div *ngIf="hayError; else tablaResultados" 
+    class="alert alert-danger">
+    No se encontró nada {{termino}}
+</div>
+<ng-template #tablaResultados >
+    <div class="row" >
+        <div class="col">
+            <app-pais-tabla 
+                *ngIf="paises.length>0"
+                [paises]="paises"></app-pais-tabla>
+        </div>
+    </div>
+</ng-template>
